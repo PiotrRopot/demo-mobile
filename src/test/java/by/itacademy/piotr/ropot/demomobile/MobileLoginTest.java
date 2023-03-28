@@ -2,15 +2,12 @@ package by.itacademy.piotr.ropot.demomobile;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 
 public class MobileLoginTest {
-    WebDriver driver;
 
     @Test
     public void testLoginCorrect() {
