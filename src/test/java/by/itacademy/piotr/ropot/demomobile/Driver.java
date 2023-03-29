@@ -18,7 +18,6 @@ public class Driver {
         }
         return driver;
     }
-
     public static void close() {
         if (driver != null) {
             driver.quit();
