@@ -1,15 +1,28 @@
 package by.itacademy.piotr.ropot.demomobile;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Driver {
+    private static WebDriver driver;
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--remote-allow-origins=*");
+            chromeOptions.addArguments("--disable-notifications");
+            chromeOptions.addArguments("--start-maximized");
 
-    public static void waitForElement(WebDriver driver, String className, int seconds) {
-        new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.presenceOfElementLocated(By.className(className)));
+            driver = new ChromeDriver(chromeOptions);
+            driver.manage().deleteAllCookies();
+        }
+        return driver;
+    }
+
+    public static void close() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }
